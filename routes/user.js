@@ -82,7 +82,7 @@ router.get("/logout", (req, res) => {
   res.clearCookie("accessToken");
   res.clearCookie("refreshToken");
   req.logout(() => {
-    return res.redirect(`${process.env.CLIENT_URL}/auth/google/callback?token=${token}`);
+    res.redirect(`${process.env.CLIENT_URL}/`);
   });
 });
 
