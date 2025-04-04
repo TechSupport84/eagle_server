@@ -25,7 +25,7 @@ app.use(
 
 app.use(
   session({
-    secret: process.env.SESSION_SECRET,
+    secret: "eaglesTransport",
     resave: false,
     saveUninitialized: false,
     cookie: {
