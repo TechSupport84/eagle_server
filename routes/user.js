@@ -60,7 +60,7 @@ router.get(
     console.log("Tokens Stored:", { token, accessToken, refreshToken });
 
     // Send only one response, redirect after storing cookies
-    return res.redirect(`${process.env.CLIENT_URL}/auth/google/callback?token=${token}`);
+    return res.redirect(`${process.env.CLIENT_URL}/home?token=${token}`);
   }
 );
 
