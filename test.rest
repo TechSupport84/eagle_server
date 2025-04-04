@@ -1,0 +1,26 @@
+POST http://localhost:3002/api/order/create
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZWJkYmRkY2VlNTI1YzdkYWUzOTBmZiIsInVzZXJuYW1lIjoibXBveWkgamVhbmN5IiwiZW1haWwiOiJqZWFuY3ltcG95aWVAZ21haWwuY29tIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0lscngtZHFISS11RE9uQzFVQVVELWV4aGRiMkZSblhZVTRlM2tfbU1ROUZoWWRqQT1zOTYtYyIsImlhdCI6MTc0MzU4OTM5MiwiZXhwIjoxNzQ0MTk0MTkyfQ.kBjKzpn52P78k7voP9SCrJEzQsBNxd6lkFRKitUhdDE
+
+
+{
+    "pickupLocation": "Downtown",
+    "destination": "Airport",
+    "price": 255,
+    "date": "2025-04-01T12:00:00.000Z",
+    "time": "14:30",
+    "vehicleMark": "Toyota",
+    "tel":"0743303216"
+}
+
+
+###connexion  
+GET http://localhost:3002/api/order/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZWJkYmRkY2VlNTI1YzdkYWUzOTBmZiIsInVzZXJuYW1lIjoibXBveWkgamVhbmN5IiwiZW1haWwiOiJqZWFuY3ltcG95aWVAZ21haWwuY29tIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0lscngtZHFISS11RE9uQzFVQVVELWV4aGRiMkZSblhZVTRlM2tfbU1ROUZoWWRqQT1zOTYtYyIsImlhdCI6MTc0MzUxNzkzNSwiZXhwIjoxNzQ0MTIyNzM1fQ.KHeUKz-kJvORrD0Fk__570ielNyj2tsaalu1QyfXc90
+
+###auth  me 
+
+GET http://localhost:3002/auth/me
+Content-Type:application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZWJkYmRkY2VlNTI1YzdkYWUzOTBmZiIsInVzZXJuYW1lIjoibXBveWkgamVhbmN5IiwiZW1haWwiOiJqZWFuY3ltcG95aWVAZ21haWwuY29tIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0lscngtZHFISS11RE9uQzFVQVVELWV4aGRiMkZSblhZVTRlM2tfbU1ROUZoWWRqQT1zOTYtYyIsImlhdCI6MTc0MzUxNzkzNSwiZXhwIjoxNzQ0MTIyNzM1fQ.KHeUKz-kJvORrD0Fk__570ielNyj2tsaalu1QyfXc90
