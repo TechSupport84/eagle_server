@@ -82,7 +82,7 @@ router.get("/logout", (req, res) => {
   res.clearCookie("accessToken");
   res.clearCookie("refreshToken");
   req.logout(() => {
-    res.redirect(`${process.env.CLIENT_URL}/`);
+    res.redirect(`${process.env.CLIENT_URL}/home`);
   });
 });
 
