@@ -60,7 +60,7 @@ router.get(
     console.log("Tokens Stored:", { token, accessToken, refreshToken });
 
     // Send only one response, redirect after storing cookies
-    return res.redirect(`${process.env.CLIENT_URL}/home`);
+    return res.redirect(`${process.env.CLIENT_URL}/auth/google/callback?token=${token}`);
   }
 );
 
@@ -82,7 +82,7 @@ router.get("/logout", (req, res) => {
   res.clearCookie("accessToken");
   res.clearCookie("refreshToken");
   req.logout(() => {
-    res.redirect(`${process.env.CLIENT_URL}/home`);
+    return res.redirect(`${process.env.CLIENT_URL}/auth/google/callback?token=${token}`);
   });
 });
 
