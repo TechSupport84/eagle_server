@@ -75,7 +75,6 @@ router.get("/login/success", authenticateToken, loginSuccess, (req, res) => {
     token: req.user.token,
   });
 });
-
 // Logout Route
 router.get("/logout", (req, res) => {
   res.clearCookie("token");

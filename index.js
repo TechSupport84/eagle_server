@@ -9,7 +9,8 @@ import userRouter from "./routes/user.js";
 import orderRouter from "./routes/order.js";
 import { connectDb } from "./config/db.js";
 import cookieParser from "cookie-parser";
-
+import priceRouter from "./routes/price.js"
+import  locationRouter from "./routes/location.js"
 dotenv.config();
 const PORT = process.env.PORT || 3002;
 const app = express();
@@ -46,6 +47,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/auth", userRouter);
 app.use("/api/order", orderRouter);
 
+//price and  location
+app.use("/api",priceRouter)
+app.use("/api",locationRouter)
 
 app.use((req, res, next) => {
   next(createError(404, "Not Found!"));
