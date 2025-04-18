@@ -24,3 +24,29 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZWJkYmRkY
 GET http://localhost:3002/auth/me
 Content-Type:application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZWJkYmRkY2VlNTI1YzdkYWUzOTBmZiIsInVzZXJuYW1lIjoibXBveWkgamVhbmN5IiwiZW1haWwiOiJqZWFuY3ltcG95aWVAZ21haWwuY29tIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0lscngtZHFISS11RE9uQzFVQVVELWV4aGRiMkZSblhZVTRlM2tfbU1ROUZoWWRqQT1zOTYtYyIsImlhdCI6MTc0MzUxNzkzNSwiZXhwIjoxNzQ0MTIyNzM1fQ.KHeUKz-kJvORrD0Fk__570ielNyj2tsaalu1QyfXc90
+
+
+#### Payments
+POST  http://localhost:3002/api/payments/create-payment
+Content-Type: application/json
+Authorization: Bearer S4j7VoayozVDiqhLx9ISNSeVuvn
+
+{
+  "amount": 1000,
+  "recipientId": "recipient_id_here", 
+  "first_name": "John",
+  "last_name": "Doe",
+  "phone_number": "+225123456789"
+}
+
+### credate Partner
+POST http://localhost:3002/api/partner/create-partner
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZWJjYjQxY2VlNTI1YzdkYWUzOTBmYSIsInVzZXJuYW1lIjoiSmVhbmN5IE1wb3lpIiwiZW1haWwiOiJqZWFuY3ltcG95MjRAZ21haWwuY29tIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0swZzFJeDMwel9SbzNmdmNobE1LVkVVOElmVWNFajF2UEwtYl9vMkJMdEVqQjMxWmRWPXM5Ni1jIiwiaWF0IjoxNzQ0OTc0Nzg5LCJleHAiOjE3NDU1Nzk1ODl9._b2LBW0imJ4UrUFdFGEfm7HXY_7Z1BDpMa_1B7LA2uY
+
+{
+  "carName": "Toyota",
+  "plaqueNumber": 57830583,
+  "tel": 5749584,
+  "city": "Abidjan"
+}
