@@ -1,6 +1,37 @@
+
+
+###auth  router  register and  (Login)
+POST http://localhost:3002/api/auth/register
+Content-Type: application/json
+
+
+{
+"username":"Jeancy Mpoyi",
+"email":"jeancympoy24@gmail.com",
+"city":"Nairobi",
+"country":"Kenya",
+"password":"jeancy01@"
+}
+###auth  router  register and  (Login)
+POST http://localhost:3002/api/auth/login
+Content-Type: application/json
+
+
+{
+"email":"jeancympoy24@gmail.com",
+"password":"jeancy01@"
+}
+
+
+### get the  current  user
+GET  http://localhost:3002/api/auth/me
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYxYTY0OGM0YmQ1N2VlZTU0NWI5ZiIsInVzZXJuYW1lIjoiSmVhbmN5IE1wb3lpIiwiZW1haWwiOiJqZWFuY3ltcG95MjRAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJpYXQiOjE3NDUyMzM3ODAsImV4cCI6MTc0NTI0NDU4MH0.X0u5NVpcYPoTicbuUoJ_7wLQbSKIKNx4Hr_DYuYnn3I
+
+### create Order .
 POST http://localhost:3002/api/order/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZWJkYmRkY2VlNTI1YzdkYWUzOTBmZiIsInVzZXJuYW1lIjoibXBveWkgamVhbmN5IiwiZW1haWwiOiJqZWFuY3ltcG95aWVAZ21haWwuY29tIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0lscngtZHFISS11RE9uQzFVQVVELWV4aGRiMkZSblhZVTRlM2tfbU1ROUZoWWRqQT1zOTYtYyIsImlhdCI6MTc0MzU4OTM5MiwiZXhwIjoxNzQ0MTk0MTkyfQ.kBjKzpn52P78k7voP9SCrJEzQsBNxd6lkFRKitUhdDE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYxMzJkMmY3YzlmMWU5YTRkNDBmYyIsInVzZXJuYW1lIjoiSmVhbmN5IE1wb3lpIiwiZW1haWwiOiJqZWFuY3ltcG95MjRAZ21haWwuY29tIiwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJpYXQiOjE3NDUyMjkyMzQsImV4cCI6MTc0NTI0MDAzNH0.M351pLY0KtSC4MKFopj95VXzYjBHKG0ZGNNwB4tLxPE
 
 
 {
@@ -17,7 +48,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZWJkYmRkY
 ###connexion  
 GET http://localhost:3002/api/order/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZWJkYmRkY2VlNTI1YzdkYWUzOTBmZiIsInVzZXJuYW1lIjoibXBveWkgamVhbmN5IiwiZW1haWwiOiJqZWFuY3ltcG95aWVAZ21haWwuY29tIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0lscngtZHFISS11RE9uQzFVQVVELWV4aGRiMkZSblhZVTRlM2tfbU1ROUZoWWRqQT1zOTYtYyIsImlhdCI6MTc0MzUxNzkzNSwiZXhwIjoxNzQ0MTIyNzM1fQ.KHeUKz-kJvORrD0Fk__570ielNyj2tsaalu1QyfXc90
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYxYTY0OGM0YmQ1N2VlZTU0NWI5ZiIsInVzZXJuYW1lIjoiSmVhbmN5IE1wb3lpIiwiZW1haWwiOiJqZWFuY3ltcG95MjRAZ21haWwuY29tIiwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJpYXQiOjE3NDUyMzA2NjcsImV4cCI6MTc0NTI0MTQ2N30.4oNQSmGKpdbGWZGZDBsXMXHtZCYd7XYEcrWYpea1WiE
 
 ###auth  me 
 
@@ -49,4 +80,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZWJjYjQxY
   "plaqueNumber": 57830583,
   "tel": 5749584,
   "city": "Abidjan"
+}
+### send  Products
+
+POST http://localhost:3002/api/product//upload
+Content-Type: application/json
+
+{
+"name":"Iphone",
+"imageUrl":"https://api.imgur.com/3/image.mp3"
 }

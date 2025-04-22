@@ -2,9 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import createError from "http-errors";
-import passport from "passport";
-import session from "express-session";
-import "./config/passport.js";
+
 import userRouter from "./routes/user.js";
 import orderRouter from "./routes/order.js";
 import { connectDb } from "./config/db.js";
@@ -13,6 +11,7 @@ import priceRouter from "./routes/price.js"
 import  locationRouter from "./routes/location.js"
 import paymentRouter  from "./routes/payment.js"
 import partnerRouter from "./routes/partner.js"
+
 dotenv.config();
 const PORT = process.env.PORT || 3002;
 const app = express();
@@ -26,28 +25,14 @@ app.use(
   })
 );
 
-app.use(
-  session({
-    secret: "eaglesTransport",
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production", 
-      maxAge: 24 * 60 * 60 * 1000, 
-    },
-  })
-);
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.use("/auth", userRouter);
+app.use("/api/auth", userRouter);
 app.use("/api/order", orderRouter);
+
 
 //price and  location
 app.use("/api",priceRouter)

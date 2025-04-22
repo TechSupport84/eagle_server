@@ -1,6 +1,8 @@
 import nodemailer from "nodemailer";
 import { clientOrderTemplate } from "./clientOrderTemplate.js";
 import { adminOrderTemplate } from "./adminOrderTemplate.js";
+import dotenv from 'dotenv';
+dotenv.config();
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",

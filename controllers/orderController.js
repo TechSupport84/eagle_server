@@ -6,6 +6,7 @@ import { sendOrderEmail } from "../utils/send_mail.js";
 export const createOrder = async (req, res, next) => {
   try {
     const userId = req.user?.id;
+
     if (!userId) {
       return next(createError(404, "User is not authenticated"));
     }
@@ -28,8 +29,8 @@ export const createOrder = async (req, res, next) => {
 
     await newOrder.save();
 
-    const adminEmail = process.env.ADMIN_EMAIL;
-
+    const adminEmail = req.user?.role === "admin" ? req.user?.email :req.user.email;
+   
     await sendOrderEmail(req.user.email, adminEmail, {
       clientName: req.user.username,
       clientEmail: req.user.email,

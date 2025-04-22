@@ -23,6 +23,7 @@
     "express-session": "^1.18.1",
     "http-error": "^0.0.6",
     "http-errors": "^2.0.0",
+    "imgur": "^2.4.3",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.15.0",
     "mongoose": "^8.13.1",
