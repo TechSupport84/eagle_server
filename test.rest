@@ -6,8 +6,8 @@ Content-Type: application/json
 
 
 {
-"username":"Jeancy Mpoyi",
-"email":"jeancympoy24@gmail.com",
+"username":"Mpoyi",
+"email":"mpoyi@gmail.com",
 "city":"Nairobi",
 "country":"Kenya",
 "password":"jeancy01@"
@@ -26,36 +26,35 @@ Content-Type: application/json
 ### get the  current  user
 GET  http://localhost:3002/api/auth/me
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYxYTY0OGM0YmQ1N2VlZTU0NWI5ZiIsInVzZXJuYW1lIjoiSmVhbmN5IE1wb3lpIiwiZW1haWwiOiJqZWFuY3ltcG95MjRAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJpYXQiOjE3NDUyMzM3ODAsImV4cCI6MTc0NTI0NDU4MH0.X0u5NVpcYPoTicbuUoJ_7wLQbSKIKNx4Hr_DYuYnn3I
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDdhZTU3MGI5OTI1NDg3ZDAyNjc0MiIsInVzZXJuYW1lIjoiSmVhbmN5IE1wb3lpIiwiZW1haWwiOiJqZWFuY3ltcG95MjRAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJpYXQiOjE3NDU1MDUyNTMsImV4cCI6MTc0NTUxNjA1M30.4aJQ8J0Bs50alW4orKWaGr4Wb1nNzhOSpD4YNhaAB_M
 
 ### create Order .
 POST http://localhost:3002/api/order/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYxMzJkMmY3YzlmMWU5YTRkNDBmYyIsInVzZXJuYW1lIjoiSmVhbmN5IE1wb3lpIiwiZW1haWwiOiJqZWFuY3ltcG95MjRAZ21haWwuY29tIiwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJpYXQiOjE3NDUyMjkyMzQsImV4cCI6MTc0NTI0MDAzNH0.M351pLY0KtSC4MKFopj95VXzYjBHKG0ZGNNwB4tLxPE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDdhZTU3MGI5OTI1NDg3ZDAyNjc0MiIsInVzZXJuYW1lIjoiSmVhbmN5IE1wb3lpIiwiZW1haWwiOiJqZWFuY3ltcG95MjRAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJpYXQiOjE3NDU1MjA1MzQsImV4cCI6MTc0NTUzMTMzNH0.ma4QIXudlBXz1CGj0PqP5rTt0UOQ7C81xOAizeZ-OlM
 
 
 {
-    "pickupLocation": "Downtown",
-    "destination": "Airport",
-    "price": 255,
-    "date": "2025-04-01T12:00:00.000Z",
-    "time": "14:30",
-    "vehicleMark": "Toyota",
-    "tel":"0743303216"
+     "pickupLocation":"Abidjan",
+      "dropLocation":"Yakro",
+      "duration":30
 }
 
-
 ###connexion  
-GET http://localhost:3002/api/order/
+GET http://localhost:3002/api/order/user/6807ae570b9925487d026742
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYxYTY0OGM0YmQ1N2VlZTU0NWI5ZiIsInVzZXJuYW1lIjoiSmVhbmN5IE1wb3lpIiwiZW1haWwiOiJqZWFuY3ltcG95MjRAZ21haWwuY29tIiwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJpYXQiOjE3NDUyMzA2NjcsImV4cCI6MTc0NTI0MTQ2N30.4oNQSmGKpdbGWZGZDBsXMXHtZCYd7XYEcrWYpea1WiE
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDdhZTU3MGI5OTI1NDg3ZDAyNjc0MiIsInVzZXJuYW1lIjoiSmVhbmN5IE1wb3lpIiwiZW1haWwiOiJqZWFuY3ltcG95MjRAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJpYXQiOjE3NDU1MjA1MzQsImV4cCI6MTc0NTUzMTMzNH0.ma4QIXudlBXz1CGj0PqP5rTt0UOQ7C81xOAizeZ-OlM
 ###auth  me 
 
-GET http://localhost:3002/auth/me
-Content-Type:application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZWJkYmRkY2VlNTI1YzdkYWUzOTBmZiIsInVzZXJuYW1lIjoibXBveWkgamVhbmN5IiwiZW1haWwiOiJqZWFuY3ltcG95aWVAZ21haWwuY29tIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0lscngtZHFISS11RE9uQzFVQVVELWV4aGRiMkZSblhZVTRlM2tfbU1ROUZoWWRqQT1zOTYtYyIsImlhdCI6MTc0MzUxNzkzNSwiZXhwIjoxNzQ0MTIyNzM1fQ.KHeUKz-kJvORrD0Fk__570ielNyj2tsaalu1QyfXc90
+### Delete
+DELETE  http://localhost:3002/api/order/delete
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDdhZTU3MGI5OTI1NDg3ZDAyNjc0MiIsInVzZXJuYW1lIjoiSmVhbmN5IE1wb3lpIiwiZW1haWwiOiJqZWFuY3ltcG95MjRAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJpYXQiOjE3NDU1MjA1MzQsImV4cCI6MTc0NTUzMTMzNH0.ma4QIXudlBXz1CGj0PqP5rTt0UOQ7C81xOAizeZ-OlM
 
+###auth
+GET http://localhost:3002/api/auth/me
+Content-Type:application/json
+Authorization: Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDdhZTU3MGI5OTI1NDg3ZDAyNjc0MiIsInVzZXJuYW1lIjoiSmVhbmN5IE1wb3lpIiwiZW1haWwiOiJqZWFuY3ltcG95MjRAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJpYXQiOjE3NDU1MDA2OTksImV4cCI6MTc0NTUxMTQ5OX0.PymbQQLgjYSylJCOo_TvBsSGVi0xt5fSGn6KE7pcbOY
 
 #### Payments
 POST  http://localhost:3002/api/payments/create-payment
@@ -73,16 +72,44 @@ Authorization: Bearer S4j7VoayozVDiqhLx9ISNSeVuvn
 ### credate Partner
 POST http://localhost:3002/api/partner/create-partner
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZWJjYjQxY2VlNTI1YzdkYWUzOTBmYSIsInVzZXJuYW1lIjoiSmVhbmN5IE1wb3lpIiwiZW1haWwiOiJqZWFuY3ltcG95MjRAZ21haWwuY29tIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0swZzFJeDMwel9SbzNmdmNobE1LVkVVOElmVWNFajF2UEwtYl9vMkJMdEVqQjMxWmRWPXM5Ni1jIiwiaWF0IjoxNzQ0OTc0Nzg5LCJleHAiOjE3NDU1Nzk1ODl9._b2LBW0imJ4UrUFdFGEfm7HXY_7Z1BDpMa_1B7LA2uY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhiZDE0OWQ0ZmI0NzAyZDA3YmVhOCIsInVzZXJuYW1lIjoiTXBveWkiLCJlbWFpbCI6Im1wb3lpQGdtYWlsLmNvbSIsInBpY3R1cmUiOm51bGwsImNvdW50cnkiOiJLZW55YSIsImNpdHkiOiJOYWlyb2JpIiwiaWF0IjoxNzQ1NDAzMTc1LCJleHAiOjE3NDU0MTM5NzV9.l12ptaROeRrjLBL8r_UqyZlCmGTHenQTxoprZoov7Zw
 
 {
   "carName": "Toyota",
-  "plaqueNumber": 57830583,
-  "tel": 5749584,
-  "city": "Abidjan"
+  "plaqueNumber":57487353,
+  "tel":"0349584953",
+  "city": "Abidjan",
+  "amount":5000
 }
-### send  Products
 
+
+
+### Get all  partners
+
+GET  http://localhost:3002/api/partner/partners
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhiZDE0OWQ0ZmI0NzAyZDA3YmVhOCIsInVzZXJuYW1lIjoiTXBveWkiLCJlbWFpbCI6Im1wb3lpQGdtYWlsLmNvbSIsInBpY3R1cmUiOm51bGwsImNvdW50cnkiOiJLZW55YSIsImNpdHkiOiJOYWlyb2JpIiwiaWF0IjoxNzQ1NDAzMTc1LCJleHAiOjE3NDU0MTM5NzV9.l12ptaROeRrjLBL8r_UqyZlCmGTHenQTxoprZoov7Zw
+
+### Confirmed Partner
+
+POST   http://localhost:3002/api/partner/confirm
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDdhZTU3MGI5OTI1NDg3ZDAyNjc0MiIsInVzZXJuYW1lIjoiSmVhbmN5IE1wb3lpIiwiZW1haWwiOiJqZWFuY3ltcG95MjRAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJpYXQiOjE3NDU1MjA1MzQsImV4cCI6MTc0NTUzMTMzNH0.ma4QIXudlBXz1CGj0PqP5rTt0UOQ7C81xOAizeZ-OlM
+
+{
+  
+      "partnerId":"RL6007",
+      "tokenMoney":"87498574",
+      "amount":7000
+}
+
+### Confirmed Partner
+
+GET http://localhost:3002/api/partner/confirmed
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDdhZTU3MGI5OTI1NDg3ZDAyNjc0MiIsInVzZXJuYW1lIjoiSmVhbmN5IE1wb3lpIiwiZW1haWwiOiJqZWFuY3ltcG95MjRAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJpYXQiOjE3NDU1MDUyNTMsImV4cCI6MTc0NTUxNjA1M30.4aJQ8J0Bs50alW4orKWaGr4Wb1nNzhOSpD4YNhaAB_M
+
+### send  Products
 POST http://localhost:3002/api/product//upload
 Content-Type: application/json
 

@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-
+import { Confirmation } from "../models/confirmation.model.js";
 export const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
 
@@ -26,3 +26,31 @@ export  const isAdmin = (req , res , next )=>{
   }
   res.status(403).json({success:false, message:"access  dinied admin only."})
 }
+
+
+export const isPartnerActive = async (req, res, next) => {
+  try {
+    const { partnerId } = req.body;
+
+    if (!partnerId) {
+      return res.status(400).json({ success: false, message: "partnerId is required." });
+    }
+
+    const now = new Date();
+
+    const confirmation = await Confirmation.findOne({
+      partnerId,
+      startDate: { $lte: now },
+      endDate: { $gte: now }
+    });
+
+    if (!confirmation) {
+      return res.status(403).json({ success: false, message: "Partner is not active or subscription has expired." });
+    }
+
+    next();
+  } catch (error) {
+    console.error("Error checking partner status:", error);
+    return res.status(500).json({ success: false, message: "Server error." });
+  }
+};

@@ -1,21 +1,23 @@
-import mongoose from "mongoose";
 
-const orderSchema = new mongoose.Schema(
-  {
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }, 
-    pickupLocation: { type: String, required: true },
-    destination: { type: String, required: true },
-    price: { type: Number, required: true },
-    date: { type: Date, required: true },  
-    time: { type: String, required: true },
-    vehicleMark: { 
-      type: String, 
-      required: true, 
-      enum: ["Suzukialto", "SuzukiAltoNew", "SuzukiEspresso", "SuzukiDzire", "SuzukiSwift", "Toyota"] 
-    },
-    tel: { type: String, required: true },
+import mongoose from 'mongoose';
+
+const OrderSchema = new mongoose.Schema({
+ userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  partner: {
+    _id: { type: mongoose.Schema.Types.ObjectId, ref: 'Partner' },
+    partnerID: String,
+    carName: String,
+    plaqueNumber: Number,
+    tel: String,
+    city: String,
+    amount: Number,
   },
-  { timestamps: true }  
-);
+  pickupLocation: { type: String, required: true },
+  dropLocation: { type: String, required: true },
+  duration: { type: Number, required: true }, 
+  price: { type: Number, required: true }, 
+  status: { type: String, enum: ['pending', 'accepted', 'completed'], default: 'pending' },
+  createdAt: { type: Date, default: Date.now }
+},{timestamps:true});
 
-export const Order = mongoose.model("Order", orderSchema);
+export const Order=  mongoose.model('Order', OrderSchema);
