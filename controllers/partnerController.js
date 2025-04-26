@@ -30,6 +30,10 @@ try {
     if (!/^\d{10}$/.test(tel)) {
         return next(createError(400, "Le numéro de téléphone doit contenir exactement 10 chiffres."));
       }
+      if (!/^[a-zA-Z]{2}\d{2}$/.test(plaqueNumber)) {
+        return next(createError(400, "Le numéro de plaque (PIM) doit contenir exactement 2 lettres suivies de 2 chiffres (ex: AB12)."));
+      }
+      
     const newPartner = new Partner({
         userId,
         partnerID:generatePartnerID(), 
@@ -47,6 +51,21 @@ try {
 }
 }
 
+export const getCurrentPartner = async(req, res, next)=>{
+    const userId = req.user?.id;
+    try {
+    const currenctParners = await Partner.findOne({userId}).sort({createdAt: -1}).populate({
+        path:"userId",
+        select:"username email"
+    })
+    if (!currenctParners) {
+        return res.status(404).json({ message: "No partners found for this user" });
+      }
+   return res.status(200).json({success:true, currenctParners})
+    } catch (error) {
+        
+    }
+}
 
 export  const  getAllPartners = async(req , res , next)=>{
     try {

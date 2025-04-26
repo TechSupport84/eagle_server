@@ -7,7 +7,7 @@ Content-Type: application/json
 
 {
 "username":"Mpoyi",
-"email":"mpoyi@gmail.com",
+"email":"mpoyi99@gmail.com",
 "city":"Nairobi",
 "country":"Kenya",
 "password":"jeancy01@"
@@ -18,32 +18,44 @@ Content-Type: application/json
 
 
 {
-"email":"jeancympoy24@gmail.com",
-"password":"jeancy01@"
+"email":"admin01@gmail.com",
+"password":"Jeancy01@"
 }
 
 
 ### get the  current  user
 GET  http://localhost:3002/api/auth/me
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDdhZTU3MGI5OTI1NDg3ZDAyNjc0MiIsInVzZXJuYW1lIjoiSmVhbmN5IE1wb3lpIiwiZW1haWwiOiJqZWFuY3ltcG95MjRAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJpYXQiOjE3NDU1MDUyNTMsImV4cCI6MTc0NTUxNjA1M30.4aJQ8J0Bs50alW4orKWaGr4Wb1nNzhOSpD4YNhaAB_M
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYzZmFjMWQ4YzBmOTU3NTlkMWE2OSIsInVzZXJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluMDFAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDU1Nzk2MDgsImV4cCI6MTc0NTU5MDQwOH0.KfM16AlUQn6RAT7vPa3ZcX0bX6HwdbvxXGEnif_IrR8
 
 ### create Order .
 POST http://localhost:3002/api/order/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDdhZTU3MGI5OTI1NDg3ZDAyNjc0MiIsInVzZXJuYW1lIjoiSmVhbmN5IE1wb3lpIiwiZW1haWwiOiJqZWFuY3ltcG95MjRAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJpYXQiOjE3NDU1MjA1MzQsImV4cCI6MTc0NTUzMTMzNH0.ma4QIXudlBXz1CGj0PqP5rTt0UOQ7C81xOAizeZ-OlM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYzZmFjMWQ4YzBmOTU3NTlkMWE2OSIsInVzZXJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluMDFAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDU2NTc2NTcsImV4cCI6MTc0NTY2ODQ1N30.WYZgbp0sVtxKx2K8Im7i-GmSMb1XT-dc8V2taYva_DI
 
 
 {
-     "pickupLocation":"Abidjan",
-      "dropLocation":"Yakro",
-      "duration":30
+     "pickupLocation":"abidjan",
+      "dropLocation":"yamoussoukro"
 }
 
-###connexion  
-GET http://localhost:3002/api/order/user/6807ae570b9925487d026742
+### create accept .
+PUT  http://localhost:3002/api/order/680cb202edd83523eb577d6b/accept
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDdhZTU3MGI5OTI1NDg3ZDAyNjc0MiIsInVzZXJuYW1lIjoiSmVhbmN5IE1wb3lpIiwiZW1haWwiOiJqZWFuY3ltcG95MjRAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJpYXQiOjE3NDU1MjA1MzQsImV4cCI6MTc0NTUzMTMzNH0.ma4QIXudlBXz1CGj0PqP5rTt0UOQ7C81xOAizeZ-OlM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYzZmFjMWQ4YzBmOTU3NTlkMWE2OSIsInVzZXJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluMDFAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDU2NTc2NTcsImV4cCI6MTc0NTY2ODQ1N30.WYZgbp0sVtxKx2K8Im7i-GmSMb1XT-dc8V2taYva_DI
+
+
+
+
+### create accept .
+PUT    http://localhost:3002/api/order/accept/680cb3b05b7fa59a99cc1d2f
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYzZmFjMWQ4YzBmOTU3NTlkMWE2OSIsInVzZXJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluMDFAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDU2NTc2NTcsImV4cCI6MTc0NTY2ODQ1N30.WYZgbp0sVtxKx2K8Im7i-GmSMb1XT-dc8V2taYva_DI
+
+###connexion  
+GET http://localhost:3002/api/order/user/680cb3b05b7fa59a99cc1d2f
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYzZmFjMWQ4YzBmOTU3NTlkMWE2OSIsInVzZXJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluMDFAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDU2NTc2NTcsImV4cCI6MTc0NTY2ODQ1N30.WYZgbp0sVtxKx2K8Im7i-GmSMb1XT-dc8V2taYva_DI
 ###auth  me 
 
 ### Delete
@@ -72,11 +84,11 @@ Authorization: Bearer S4j7VoayozVDiqhLx9ISNSeVuvn
 ### credate Partner
 POST http://localhost:3002/api/partner/create-partner
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhiZDE0OWQ0ZmI0NzAyZDA3YmVhOCIsInVzZXJuYW1lIjoiTXBveWkiLCJlbWFpbCI6Im1wb3lpQGdtYWlsLmNvbSIsInBpY3R1cmUiOm51bGwsImNvdW50cnkiOiJLZW55YSIsImNpdHkiOiJOYWlyb2JpIiwiaWF0IjoxNzQ1NDAzMTc1LCJleHAiOjE3NDU0MTM5NzV9.l12ptaROeRrjLBL8r_UqyZlCmGTHenQTxoprZoov7Zw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYzZmFjMWQ4YzBmOTU3NTlkMWE2OSIsInVzZXJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluMDFAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDU1ODM3MDQsImV4cCI6MTc0NTU5NDUwNH0.kJF6jXUwbCxOCwxpzmcQ6qTdWMxbB4A7G0FGMAyN4As
 
 {
   "carName": "Toyota",
-  "plaqueNumber":57487353,
+  "plaqueNumber":"nn23",
   "tel":"0349584953",
   "city": "Abidjan",
   "amount":5000
@@ -86,28 +98,34 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhiZDE0O
 
 ### Get all  partners
 
-GET  http://localhost:3002/api/partner/partners
+GET  http://localhost:3002/api/partner/unconfirmed-partner
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhiZDE0OWQ0ZmI0NzAyZDA3YmVhOCIsInVzZXJuYW1lIjoiTXBveWkiLCJlbWFpbCI6Im1wb3lpQGdtYWlsLmNvbSIsInBpY3R1cmUiOm51bGwsImNvdW50cnkiOiJLZW55YSIsImNpdHkiOiJOYWlyb2JpIiwiaWF0IjoxNzQ1NDAzMTc1LCJleHAiOjE3NDU0MTM5NzV9.l12ptaROeRrjLBL8r_UqyZlCmGTHenQTxoprZoov7Zw
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYzZmFjMWQ4YzBmOTU3NTlkMWE2OSIsInVzZXJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluMDFAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDU1ODM3MDQsImV4cCI6MTc0NTU5NDUwNH0.kJF6jXUwbCxOCwxpzmcQ6qTdWMxbB4A7G0FGMAyN4As
 ### Confirmed Partner
 
 POST   http://localhost:3002/api/partner/confirm
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDdhZTU3MGI5OTI1NDg3ZDAyNjc0MiIsInVzZXJuYW1lIjoiSmVhbmN5IE1wb3lpIiwiZW1haWwiOiJqZWFuY3ltcG95MjRAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJpYXQiOjE3NDU1MjA1MzQsImV4cCI6MTc0NTUzMTMzNH0.ma4QIXudlBXz1CGj0PqP5rTt0UOQ7C81xOAizeZ-OlM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYzZmFjMWQ4YzBmOTU3NTlkMWE2OSIsInVzZXJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluMDFAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDU1ODM3MDQsImV4cCI6MTc0NTU5NDUwNH0.kJF6jXUwbCxOCwxpzmcQ6qTdWMxbB4A7G0FGMAyN4As
 
 {
   
-      "partnerId":"RL6007",
-      "tokenMoney":"87498574",
-      "amount":7000
+      "partnerId":"RF8422",
+      "tokenMoney":"8749857443",
+      "amount":8000
 }
 
-### Confirmed Partner
 
+
+
+### Current partners
+GET http://localhost:3002/api/partner/current-partner
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDdhZTU3MGI5OTI1NDg3ZDAyNjc0MiIsInVzZXJuYW1lIjoiSmVhbmN5IE1wb3lpIiwiZW1haWwiOiJqZWFuY3ltcG95MjRAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJpYXQiOjE3NDU1NzE5MTksImV4cCI6MTc0NTU4MjcxOX0.slaGdhkz0xvB__3kQ-ZpFgG0Vhe__9JVQZmy16KRpKM
+
+### Confirmed Partner
 GET http://localhost:3002/api/partner/confirmed
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDdhZTU3MGI5OTI1NDg3ZDAyNjc0MiIsInVzZXJuYW1lIjoiSmVhbmN5IE1wb3lpIiwiZW1haWwiOiJqZWFuY3ltcG95MjRAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJpYXQiOjE3NDU1MDUyNTMsImV4cCI6MTc0NTUxNjA1M30.4aJQ8J0Bs50alW4orKWaGr4Wb1nNzhOSpD4YNhaAB_M
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYzZmFjMWQ4YzBmOTU3NTlkMWE2OSIsInVzZXJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluMDFAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDU1ODM3MDQsImV4cCI6MTc0NTU5NDUwNH0.kJF6jXUwbCxOCwxpzmcQ6qTdWMxbB4A7G0FGMAyN4As
 
 ### send  Products
 POST http://localhost:3002/api/product//upload

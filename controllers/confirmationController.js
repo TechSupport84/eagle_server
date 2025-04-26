@@ -83,3 +83,26 @@ export const getAllConfirmedPartner = async (req, res) => {
     res.status(500).json({ success: false, message: "Server error." });
   }
 };
+
+
+
+export const getAllUnconfirmedPartners = async (req, res) => {
+  try {
+    const unconfirmedPartners = await Partner.find({
+      partnerID: { $nin: await Confirmation.distinct("partnerId") }
+    }).populate("userId", "username email");
+
+    if (!unconfirmedPartners || unconfirmedPartners.length === 0) {
+      return res.status(404).json({ success: false, message: "No unconfirmed partners found." });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Unconfirmed partners retrieved successfully.",
+      partners: unconfirmedPartners
+    });
+  } catch (error) {
+    console.error("Error fetching unconfirmed partners:", error);
+    res.status(500).json({ success: false, message: "Server error." });
+  }
+};

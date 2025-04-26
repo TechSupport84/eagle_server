@@ -4,7 +4,7 @@ import  jwt from "jsonwebtoken"
 import mongoose from "mongoose";
 //register
 export const register = async(req , res)=>{
-const  {username, email, city, country, password, role } = req.body;
+const  {username, email, city, country, password } = req.body;
 const pictUrl = req.file?.path || null 
 
 try {
@@ -21,8 +21,6 @@ try {
     city,
     country,
     password: hashedPassword,
-    role
-
   })
   await newUser.save()
   res.status(200).json({success:true, message:"Registered  successfully",newUser})
@@ -45,7 +43,7 @@ if(!isMatchPassword)return res.status(403).json({success:false, message:"Invalid
     email:user.email,
     picture:user.picture,
     country:user.country, 
-    city:user.city }, process.env.SECRET_TOKEN, {expiresIn:"3h"})
+    city:user.city ,role:user.role}, process.env.SECRET_TOKEN, {expiresIn:"3h"})
   
     res.status(200).json({success:true, message:"Logged In ",user:{
       "id":user._id,
@@ -53,7 +51,8 @@ if(!isMatchPassword)return res.status(403).json({success:false, message:"Invalid
       "email":user.email,
       "picture":user.picture,
       "country":user.country,
-      "city":user.city
+      "city":user.city,
+      "role":user.role
     }, token:token})
 } catch (error) {
   

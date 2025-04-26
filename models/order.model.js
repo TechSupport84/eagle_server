@@ -7,7 +7,7 @@ const OrderSchema = new mongoose.Schema({
     _id: { type: mongoose.Schema.Types.ObjectId, ref: 'Partner' },
     partnerID: String,
     carName: String,
-    plaqueNumber: Number,
+    plaqueNumber: String,
     tel: String,
     city: String,
     amount: Number,
