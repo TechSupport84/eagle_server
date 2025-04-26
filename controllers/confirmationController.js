@@ -41,6 +41,12 @@ export const confirmation = async (req, res) => {
     const confirmedPartenerID = await Confirmation.findOne({partnerId})
     if(confirmedPartenerID)return res.status(403).json({success:false, message:"A Subcription with  this  partner Id  already  exist."})
     //  Save the confirmation
+
+  //valigate token 
+  if (!/^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z0-9]{17}$/.test(tokenMoney)) {
+    return next(createError(400, "Le ID de transaction doit contenir 17 caractères, incluant au moins une lettre et un chiffre."));
+  }
+  
     const newConfirmedPartner = new Confirmation({
       userId,
       partnerId,
