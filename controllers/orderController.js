@@ -8,7 +8,7 @@ import { getTravelDuration } from "../features/googMaps.js";
 
 // Function to calculate price based on a fixed rate per minute
 function calculatePrice(duration) {
-  const ratePerMinute = 150; // Fixed rate per minute
+  const ratePerMinute = 187; // Fixed rate per minute
   return ratePerMinute * duration;
 }
 
