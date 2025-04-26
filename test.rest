@@ -125,7 +125,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYzZmFjM
 ### Confirmed Partner
 GET http://localhost:3002/api/partner/confirmed
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYzZmFjMWQ4YzBmOTU3NTlkMWE2OSIsInVzZXJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluMDFAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDU1ODM3MDQsImV4cCI6MTc0NTU5NDUwNH0.kJF6jXUwbCxOCwxpzmcQ6qTdWMxbB4A7G0FGMAyN4As
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYzZmFjMWQ4YzBmOTU3NTlkMWE2OSIsInVzZXJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluMDFAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDU2Njc5MDgsImV4cCI6MTc0NTY3ODcwOH0.-eA30nlBErMMsByOeDI5BVCRcrd837MVakmVzd6AO00
 
 ### send  Products
 POST http://localhost:3002/api/product//upload
@@ -135,3 +135,23 @@ Content-Type: application/json
 "name":"Iphone",
 "imageUrl":"https://api.imgur.com/3/image.mp3"
 }
+
+
+###Contact 
+
+POST  http://localhost:3002/api/contact/create-contact
+Content-Type: application/json
+
+{
+  "name":"Jeancy",
+  "email":"jeancympoy24@gmail.com",
+  "message":"je suis la"
+}
+
+### Confirmed Partner
+GET  http://localhost:3002/api/contact/contacts
+Content-Type: application/json
+
+### Confirmed Partner
+DELETE http://localhost:3002/api/contact/delete
+Content-Type: application/json

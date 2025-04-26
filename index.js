@@ -9,7 +9,7 @@ import { connectDb } from "./config/db.js";
 import cookieParser from "cookie-parser";
 import paymentRouter  from "./routes/payment.js"
 import partnerRouter from "./routes/partner.js"
-
+import routerContact from "./routes/contact.js"
 dotenv.config();
 const PORT = process.env.PORT || 3002;
 const app = express();
@@ -36,6 +36,9 @@ app.use("/api/order", orderRouter);
 app.use('/api/payments',paymentRouter );
 app.use("/api/partner", partnerRouter)
 
+
+//contact 
+app.use("/api/contact",routerContact)
 app.use((req, res, next) => {
   next(createError(404, "Not Found!"));
 });

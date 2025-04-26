@@ -42,11 +42,10 @@ export const confirmation = async (req, res) => {
     if(confirmedPartenerID)return res.status(403).json({success:false, message:"A Subcription with  this  partner Id  already  exist."})
     //  Save the confirmation
 
-  //valigate token 
-  if (!/^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z0-9]{17}$/.test(tokenMoney)) {
-    return next(createError(400, "Le ID de transaction doit contenir 17 caractères, incluant au moins une lettre et un chiffre."));
-  }
-  
+    if (!/^(?=(?:.*[a-zA-Z]){1,})(?=(?:.*\d){1,})[a-zA-Z\d]{17}$/.test(tokenMoney)) {
+      return next(createError(400, "Le ID de transaction doit contenir exactement 17 caractères, incluant au moins une lettre et un chiffre."));
+    }
+    
     const newConfirmedPartner = new Confirmation({
       userId,
       partnerId,
@@ -74,7 +73,7 @@ export const getAllConfirmedPartner = async (req, res) => {
   try {
     const confirmedPartners = await Confirmation.find({})
       .populate("userId","username email");
-
+   
     if (!confirmedPartners || confirmedPartners.length === 0) {
       return res.status(404).json({ success: false, message: "No confirmed partners found." });
     }
@@ -89,7 +88,7 @@ export const getAllConfirmedPartner = async (req, res) => {
     res.status(500).json({ success: false, message: "Server error." });
   }
 };
-
+ 
 
 
 export const getAllUnconfirmedPartners = async (req, res) => {
