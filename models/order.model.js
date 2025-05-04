@@ -17,7 +17,8 @@ const OrderSchema = new mongoose.Schema({
   duration: { type: Number, required: true }, 
   price: { type: Number, required: true }, 
   status: { type: String, enum: ['pending', 'accepted', 'completed'], default: 'pending' },
-  createdAt: { type: Date, default: Date.now }
+  orderDate: { type: Date, required: true },
+  orderHour: { type: String, required: true }
 },{timestamps:true});
 
 export const Order=  mongoose.model('Order', OrderSchema);

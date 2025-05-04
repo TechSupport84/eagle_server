@@ -31,12 +31,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYzZmFjM
 ### create Order .
 POST http://localhost:3002/api/order/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYzZmFjMWQ4YzBmOTU3NTlkMWE2OSIsInVzZXJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluMDFAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDU2NTc2NTcsImV4cCI6MTc0NTY2ODQ1N30.WYZgbp0sVtxKx2K8Im7i-GmSMb1XT-dc8V2taYva_DI
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYzZmFjMWQ4YzBmOTU3NTlkMWE2OSIsInVzZXJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluMDFAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDYzNTE5NzgsImV4cCI6MTc0NjM2Mjc3OH0.8DCByDVcpcxlutih4C8A7-Ek7VSraBYA-8OslJC1H0g
 
 {
      "pickupLocation":"abidjan",
-      "dropLocation":"yamoussoukro"
+      "dropLocation":"yamoussoukro",
+      "orderDate":"2025-05-04T00:00:00.000Z",
+      "orderHour":"24:50"
 }
 
 ### create accept .

@@ -30,9 +30,6 @@ try {
     if (!/^\d{10}$/.test(tel)) {
         return next(createError(400, "Le numéro de téléphone doit contenir exactement 10 chiffres."));
       }
-      if (!/^(?=(?:.*[a-zA-Z]){2})(?=(?:.*\d){2})[a-zA-Z\d]{4}$/.test(plaqueNumber)) {
-        return next(createError(400, "Le numéro de plaque (PIM) doit contenir exactement 2 lettres et 2 chiffres mélangés (ex: A1B2 ou 1A2B)."));
-      }
       
     const newPartner = new Partner({
         userId,

@@ -15,10 +15,10 @@ function calculatePrice(duration) {
 // Create new order
 export const createOrder = async (req, res, next) => {
   try {
-    const { pickupLocation, dropLocation } = req.body;
+    const { pickupLocation, dropLocation ,orderDate,orderHour} = req.body;
     const clientId = req.user.id;
 
-    if (!pickupLocation || !dropLocation) {
+    if (!pickupLocation || !dropLocation||!orderDate||!orderHour) {
       return res
         .status(400)
         .json({ success: false, message: "pickupLocation and dropLocation are required." });
@@ -60,6 +60,8 @@ export const createOrder = async (req, res, next) => {
       duration,
       price,
       status: "pending", // initial status
+      orderDate:new Date(orderDate),
+      orderHour,
       partner: {
         _id: randomPartner._id,
         partnerID: randomPartner.partnerID,
