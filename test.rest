@@ -6,11 +6,10 @@ Content-Type: application/json
 
 
 {
-"username":"Mpoyi",
-"email":"mpoyi99@gmail.com",
-"city":"Nairobi",
-"country":"Kenya",
-"password":"jeancy01@"
+"username":"Admin",
+"email":"eaglesvisionms@gmail.com",
+"tel":"3058309583",
+"password":"1234"
 }
 ###auth  router  register and  (Login)
 POST http://localhost:3002/api/auth/login
@@ -18,8 +17,8 @@ Content-Type: application/json
 
 
 {
-"email":"admin01@gmail.com",
-"password":"Jeancy01@"
+"email":"eaglesvisionms@gmail.com",
+"password":"1234"
 }
 
 ###auth  router  register and  (Login)
@@ -35,7 +34,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYzZmFjM
 ### create Order .
 POST http://localhost:3002/api/order/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYzZmFjMWQ4YzBmOTU3NTlkMWE2OSIsInVzZXJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluMDFAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDYzNTE5NzgsImV4cCI6MTc0NjM2Mjc3OH0.8DCByDVcpcxlutih4C8A7-Ek7VSraBYA-8OslJC1H0g
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MWNiZTg5NTRmZjMyNzk3MmZjNThhYyIsInVzZXJuYW1lIjoiQWRtaW4iLCJlbWFpbCI6ImVhZ2xlc3Zpc2lvbm1zQGdtYWlsLmNvbSIsInByb2ZpbGVVcmwiOm51bGwsImFkZHJlc3MiOltdLCJ0ZWwiOiIzMDU4MzA5NTgzIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzQ2NzE1MTU5LCJleHAiOjE3NDczMTk5NTl9.xIdGSqmydxXzmdv6xDNjYN5Zg3HSvKJtlKgbEqZRs-4
 
 {
      "pickupLocation":"abidjan",
@@ -58,9 +57,9 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYzZmFjMWQ4YzBmOTU3NTlkMWE2OSIsInVzZXJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluMDFAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDU2NTc2NTcsImV4cCI6MTc0NTY2ODQ1N30.WYZgbp0sVtxKx2K8Im7i-GmSMb1XT-dc8V2taYva_DI
 
 ###connexion  
-GET http://localhost:3002/api/order/user/680cb3b05b7fa59a99cc1d2f
+GET http://localhost:3002/api/order/user/681cbe8954ff327972fc58ac
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYzZmFjMWQ4YzBmOTU3NTlkMWE2OSIsInVzZXJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluMDFAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDU2NTc2NTcsImV4cCI6MTc0NTY2ODQ1N30.WYZgbp0sVtxKx2K8Im7i-GmSMb1XT-dc8V2taYva_DI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MWNiZTg5NTRmZjMyNzk3MmZjNThhYyIsInVzZXJuYW1lIjoiQWRtaW4iLCJlbWFpbCI6ImVhZ2xlc3Zpc2lvbm1zQGdtYWlsLmNvbSIsInByb2ZpbGVVcmwiOm51bGwsImFkZHJlc3MiOltdLCJ0ZWwiOiIzMDU4MzA5NTgzIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzQ2NzE1MjIxLCJleHAiOjE3NDczMjAwMjF9.0NxSluPGtT08lVQdFiDahl-ywOdoGJ4k_wSmh_QHOkE
 ###auth  me 
 
 ### Delete

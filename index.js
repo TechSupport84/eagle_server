@@ -2,25 +2,24 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import createError from "http-errors";
-
-import userRouter from "./routes/user.js";
 import orderRouter from "./routes/order.js";
 import { connectDb } from "./config/db.js";
 import cookieParser from "cookie-parser";
 import paymentRouter  from "./routes/payment.js"
 import partnerRouter from "./routes/partner.js"
 import routerContact from "./routes/contact.js"
+import {userRouter} from "./routes/user.js"
 dotenv.config();
 const PORT = process.env.PORT || 3002;
 const app = express();
-app.use(cookieParser());
+
 app.use(
   cors({
-    origin:['https://vtceaglestrans.com'], 
+    origin:["https://vtceaglestrans.com"], 
     credentials: true
   })
 );
-
+app.use(cookieParser());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

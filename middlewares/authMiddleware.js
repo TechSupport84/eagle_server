@@ -1,31 +1,45 @@
 import jwt from "jsonwebtoken";
 import { Confirmation } from "../models/confirmation.model.js";
+import createError from "http-errors";
 
-// Middleware: Verify JWT Token from Cookie
-export const authenticateToken = (req, res, next) => {
-  const token = req.cookies?.token;
-
-  if (!token) {
-    return res.status(401).json({ success: false, message: "Access denied. No token provided." });
-  }
-
-  jwt.verify(token, process.env.SECRET_TOKEN, (err, decoded) => {
-    if (err) {
-      return res.status(403).json({ success: false, message: "Invalid token.", error: err.message });
+export const verifyToken = (req, res, next) => {
+  try {
+    let token;
+    // Check for token in Authorization header
+    if (
+      req.headers.authorization &&
+      req.headers.authorization.startsWith("Bearer ")
+    ) {
+      token = req.headers.authorization.split(" ")[1];
+    }
+    // Fallback to token in cookies
+    if (!token && req.cookies?.token) {
+      token = req.cookies.token;
+    }
+    if (!token) {
+      return next(createError(401, "Access denied. Token missing."));
     }
 
-    req.user = decoded;
+    // Verify the token and decode
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded; // Attach the decoded token (e.g., { id, role }) to the request object
     next();
-  });
+  } catch (error) {
+    return next(createError(403, "Invalid or expired token."));
+  }
 };
 
-// Middleware: Check if User is Admin
-export const isAdmin = (req, res, next) => {
-  if (req.user?.role === "admin") {
-    return next();
+// Middleware to check if the user is an admin
+export const isAdmin = async (req, res, next) => {
+  try {
+    // Ensure the user has the admin role
+    if (req.user.role !== "admin") {
+      return res.status(403).json({ message: "Access denied. Admins only." });
+    }
+    next(); // Proceed if admin
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error });
   }
-
-  return res.status(403).json({ success: false, message: "Access denied. Admins only." });
 };
 // Middleware: Check if Partner is Active
 export const isPartnerActive = async (req, res, next) => {
