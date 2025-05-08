@@ -22,6 +22,10 @@ Content-Type: application/json
 "password":"Jeancy01@"
 }
 
+###auth  router  register and  (Login)
+POST http://localhost:3002/api/auth/logout
+Content-Type: application/json
+
 
 ### get the  current  user
 GET  http://localhost:3002/api/auth/me
