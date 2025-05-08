@@ -3,6 +3,32 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
 
+// Helper function to generate JWT token
+const generateToken = (user) => {
+  return jwt.sign(
+    {
+      id: user._id,
+      username: user.username,
+      email: user.email,
+      picture: user.picture,
+      country: user.country,
+      city: user.city,
+      role: user.role,
+    },
+    process.env.SECRET_TOKEN,
+    { expiresIn: "3h" }
+  );
+};
+
+// Helper function to set the authentication cookie
+const setAuthCookie = (res, token) => {
+  res.cookie("token", token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
+    maxAge: 24 * 60 * 60 * 1000,
+  });
+};
+
 // Register
 export const register = async (req, res) => {
   const { username, email, city, country, password } = req.body;
@@ -18,7 +44,7 @@ export const register = async (req, res) => {
       return res.status(409).json({ success: false, message: "A user with this email already exists." });
     }
 
-    const hashedPassword = bcrypt.hashSync(password, 10);
+    const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({
       username,
       email,
@@ -30,25 +56,8 @@ export const register = async (req, res) => {
 
     await newUser.save();
 
-    const token = jwt.sign(
-      {
-        id: newUser._id,
-        username: newUser.username,
-        email: newUser.email,
-        picture: newUser.picture,
-        city: newUser.city,
-        country: newUser.country,
-        role: newUser.role,
-      },
-      process.env.SECRET_TOKEN,
-      { expiresIn: "3h" }
-    );
-
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: false, // Set to true in production
-      maxAge: 24 * 60 * 60 * 1000,
-    });
+    const token = generateToken(newUser);
+    setAuthCookie(res, token);
 
     res.status(201).json({
       success: true,
@@ -76,30 +85,13 @@ export const loginSuccess = async (req, res) => {
 
   try {
     const user = await User.findOne({ email });
-    if (!user) return res.status(404).json({ success: false, message: "No user found." });
+    if (!user) return res.status(403).json({ success: false, message: "Invalid email or password." });
 
-    const isMatchPassword = bcrypt.compareSync(password, user.password);
-    if (!isMatchPassword) return res.status(403).json({ success: false, message: "Invalid password." });
+    const isMatchPassword = await bcrypt.compare(password, user.password);
+    if (!isMatchPassword) return res.status(403).json({ success: false, message: "Invalid email or password." });
 
-    const token = jwt.sign(
-      {
-        id: user._id,
-        username: user.username,
-        email: user.email,
-        picture: user.picture,
-        country: user.country,
-        city: user.city,
-        role: user.role,
-      },
-      process.env.SECRET_TOKEN,
-      { expiresIn: "3h" }
-    );
-
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: false, // Set to true in production
-      maxAge: 24 * 60 * 60 * 1000,
-    });
+    const token = generateToken(user);
+    setAuthCookie(res, token);
 
     res.status(200).json({
       success: true,
