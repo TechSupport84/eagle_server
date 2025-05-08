@@ -1,5 +1,5 @@
 import express from "express";
-import dotenv from "dotenv";
+import "dotenv/config"
 import cors from "cors";
 import createError from "http-errors";
 import orderRouter from "./routes/order.js";
@@ -9,7 +9,7 @@ import paymentRouter  from "./routes/payment.js"
 import partnerRouter from "./routes/partner.js"
 import routerContact from "./routes/contact.js"
 import {userRouter} from "./routes/user.js"
-dotenv.config();
+
 const PORT = process.env.PORT || 3002;
 const app = express();
 
