@@ -16,7 +16,7 @@ const app = express();
 app.use(cookieParser());
 app.use(
   cors({
-    origin:['https://vtceaglestrans.com'], 
+    origin:['https://eagle-server.onrender.com'], 
     credentials: true, 
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
