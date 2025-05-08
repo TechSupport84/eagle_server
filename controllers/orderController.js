@@ -16,7 +16,7 @@ function calculatePrice(duration) {
 export const createOrder = async (req, res, next) => {
   try {
     const { pickupLocation, dropLocation ,orderDate,orderHour} = req.body;
-    const clientId = req.user.id;
+    const clientId = req.user?.id;
 
     if (!pickupLocation || !dropLocation||!orderDate||!orderHour) {
       return res
