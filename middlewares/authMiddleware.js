@@ -2,29 +2,19 @@ import jwt from "jsonwebtoken";
 import { Confirmation } from "../models/confirmation.model.js";
 import createError from "http-errors";
 
-export const verifyToken = (req, res, next) => {
-  try {
-    let token;
-    // Check for token in Authorization header
-    if (
-      req.headers.authorization &&
-      req.headers.authorization.startsWith("Bearer ")
-    ) {
-      token = req.headers.authorization.split(" ")[1];
-    }
-    // Fallback to token in cookies
-    if (!token && req.cookies?.token) {
-      token = req.cookies.token;
-    }
-    if (!token) {
-      return next(createError(401, "Access denied. Token missing."));
-    }
 
-    // Verify the token and decode
+export const verifyToken = (req, res, next) => {
+  const token = req.headers?.authorization?.split(" ")[1];
+
+  if (!token) {
+    return next(createError(401, "Access denied. No token provided."));
+  }
+
+  try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded; // Attach the decoded token (e.g., { id, role }) to the request object
+    req.user = decoded;
     next();
-  } catch (error) {
+  } catch (err) {
     return next(createError(403, "Invalid or expired token."));
   }
 };

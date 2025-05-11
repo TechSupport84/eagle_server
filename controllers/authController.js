@@ -43,12 +43,13 @@ const userProfile = req?.file || null;
     await newUser.save()
     const token = jwt.sign({id:newUser._id, username:newUser.username,email:newUser.email, role:newUser.role, tel:newUser.tel},process.env.JWT_SECRET,{expiresIn:'7d'})
 
-    res.cookie("token",token,{
-        httpOnly:true,
-        secure:false,
-        maxAge: 24*60*60*1000
-    })
- 
+res.cookie("token", token, {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: "lax",
+  maxAge: 24 * 60 * 60 * 1000,
+});
+
     res.status(201).json({success:true,message:"New User registered successfully.",token, user:{
       id:newUser._id,
       username:newUser.username,
@@ -79,14 +80,16 @@ const login = async(req , res, next)=>{
          address:user.address,
          tel:user.tel,
          role:user.role
-        }, process.env.JWT_SECRET, {expiresIn:"7d"})
+        }, process.env.JWT_SECRET, {expiresIn:"1d"})
 
-    res.cookie("token",token,{
-      httpOnly:true,
-      secure:false,
-      maxAge:24*60*60*1000
-    })
-    res.status(201).json({success:true,message:"Login  successfully", token,user:{
+res.cookie("token", token, {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: "lax",
+  maxAge: 24 * 60 * 60 * 1000,
+});
+
+    res.status(200).json({success:true,message:"Login  successfully", token,user:{
         id: user._id,
         username:user.username,
         email:user.email,
@@ -114,16 +117,22 @@ const logout = async (req, res, next) => {
       next(error); 
     }
   };
-const getMe = async(req, res, next)=>{
-    try {
-        const user = await User.findById(req.user.id).select("-password")
-        if(!user)return next(createError(404,"User not  found."))
-        res.status(201).json({success:true, user})
-
-    } catch (error) {
-        next(createError(500, "Internal or server  error"))
+const getMe = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.user.id).select("-password"); // Avoid sending password
+    if (!user) {
+      return next(createError(404, "User not found.")); // Better error message
     }
-}
+    return res.status(200).json({
+      success: true,
+      user, // Send user data (excluding password)
+    });
+  } catch (error) {
+    console.error("Error fetching user:", error); // Optionally log the error
+    next(createError(500, "Internal server error")); // Provide meaningful error message
+  }
+};
+
 const updatePassword = async (req, res, next) => {
     const userId = req.user?.id;
     const { currentPassword, newPassword } = req.body;
