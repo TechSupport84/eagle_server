@@ -23,11 +23,17 @@ const register = async(req, res, next)=>{
 const {username, email, password,address,tel} = req.body;
 const userProfile = req?.file || null;
  try {
-     const userExist  = await User.findOne({email})
-     if(userExist)return next(createError(403,"User  with  this  email already  exists."))
-     if(!username||!email||!password ){
+     const userExist  = await User.findOne({tel})
+     if(userExist)return next(createError(403,"User  with  this  phone  number already  exists."))
+     if(!username||!tel||!password ){
         return next(createError(403, "All fields are required."))
      }
+
+
+        const isValideTel =(tel) => /^(\+?\d{9,15}|\d{9,15})$/.test(tel);
+
+        if(!isValideTel) return next(createError(403,"The phone  number  must be  valid."))
+
      const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
      if(!isValidEmail)return next(createError(403,"The email  must be  valid."))
 
@@ -66,9 +72,9 @@ res.cookie("token", token, {
 
 
 const login = async(req , res, next)=>{
-    const {email, password} = req.body;
+    const {tel, password} = req.body;
     try {
-        const user = await User.findOne({email})
+        const user = await User.findOne({tel})
         if(!user) return next(createError(404, "User  or password  incorrect."))
         const isValidPassword = bcrypt.compareSync(password,user.password)
        if(!isValidPassword)return next(createError(403, "Username  or  password is  incorrect"))

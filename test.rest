@@ -4,11 +4,10 @@
 POST http://localhost:3002/api/auth/register
 Content-Type: application/json
 
-
 {
 "username":"Admin",
 "email":"eaglesvisionms@gmail.com",
-"tel":"3058309583",
+"tel":"+254743303216",
 "password":"1234"
 }
 ###auth  router  register and  (Login)
@@ -17,7 +16,7 @@ Content-Type: application/json
 
 
 {
-"email":"eaglesvisionms@gmail.com",
+"tel":"3058309583",
 "password":"1234"
 }
 
