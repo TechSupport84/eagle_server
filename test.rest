@@ -6,8 +6,8 @@ Content-Type: application/json
 
 {
 "username":"Admin",
-"email":"eaglesvisionms@gmail.com",
-"tel":"+2254651379",
+"email":"jeancympoy24@gmail.com",
+"tel":"07403303216",
 "password":"1234"
 }
 ###auth  router  register and  (Login)
@@ -16,7 +16,7 @@ Content-Type: application/json
 
 
 {
-"tel":"+2254651379",
+"tel":"07403303216",
 "password":"1234"
 }
 

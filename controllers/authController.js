@@ -8,164 +8,107 @@ import * as crypto from "node:crypto"
 
 
 //send Email 
-// 📩 Configure transporter once
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  host: "smtp.gmail.com",
+const  transporter = nodemailer.createTransport({
+  service:"gmail",
+  host: 'smtp.gmail.com',
   port: 587,
   secure: false,
-  auth: {
-    user: process.env.USER_EMAIL,
-    pass: process.env.EMAIL_PASS,
-  },
+  auth:{
+    user:process.env.USER_EMAIL,
+    pass:process.env.EMAIL_PASS
+  }
+})
+
+const register = async(req, res, next)=>{
+const {username, email, password,address,tel} = req.body;
+const userProfile = req?.file || null;
+ try {
+     const userExist  = await User.findOne({tel})
+     if(userExist)return next(createError(403,"User  with  this  phone  number already  exists."))
+     if(!username||!tel||!password ){
+        return next(createError(403, "All fields are required."))
+     }
+
+
+        const isValideTel =(tel) => /^(\+?\d{9,15}|\d{9,15})$/.test(tel);
+
+        if(!isValideTel) return next(createError(403,"The phone  number  must be  valid."))
+
+     const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+     if(!isValidEmail)return next(createError(403,"The email  must be  valid."))
+
+    const hasPassword = bcrypt.hashSync(password, 10)
+    const newUser = new User({
+        username,
+        email,
+        password:hasPassword,
+        profileUrl:userProfile,
+        address,
+        tel
+    })
+    await newUser.save()
+    const token = jwt.sign({id:newUser._id, username:newUser.username,email:newUser.email, role:newUser.role, tel:newUser.tel},process.env.JWT_SECRET,{expiresIn:'7d'})
+
+res.cookie("token", token, {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: "lax",
+  maxAge: 24 * 60 * 60 * 1000,
 });
 
-// ------------------------------------
-// 📤 REGISTER
-const register = async (req, res, next) => {
-  const { username, email, password, address, tel } = req.body;
-  const userProfile = req?.file || null;
+    res.status(201).json({success:true,message:"New User registered successfully.",token, user:{
+      id:newUser._id,
+      username:newUser.username,
+      email:newUser.email,
+      role:newUser.role,
+      tel:newUser.tel
+    } })
+ } catch (error) {
+     next(createError(500, "Internal  Error "))
+ }
 
-  try {
-    const userExist = await User.findOne({ tel });
-    if (userExist)
-      return next(createError(403, "User with this phone number already exists."));
+}
 
-    if (!username || !tel || !password) {
-      return next(createError(403, "All fields are required."));
+
+
+const login = async(req , res, next)=>{
+    const {tel, password} = req.body;
+    try {
+        const user = await User.findOne({tel})
+        if(!user) return next(createError(404, "User  or password  incorrect."))
+        const isValidPassword = bcrypt.compareSync(password,user.password)
+       if(!isValidPassword)return next(createError(403, "Username  or  password is  incorrect"))
+       
+     const token = jwt.sign({id:user._id,
+         username:user.username,
+         email:user.email,
+         profileUrl:user.profileUrl,
+         address:user.address,
+         tel:user.tel,
+         role:user.role
+        }, process.env.JWT_SECRET, {expiresIn:"1d"})
+
+res.cookie("token", token, {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: "lax",
+  maxAge: 24 * 60 * 60 * 1000,
+});
+
+    res.status(200).json({success:true,message:"Login  successfully", token,user:{
+        id: user._id,
+        username:user.username,
+        email:user.email,
+        profileUrl:user.profileUrl,
+        address:user.address,
+        tel:user.tel,
+        role:user.role
+    }})
+    } catch (error) {
+        next(createError(500, "Internal error occured."))
     }
 
-    const isValidTel = /^(\+?\d{9,15}|\d{9,15})$/.test(tel);
-    if (!isValidTel) return next(createError(403, "The phone number must be valid."));
-
-    const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    if (!isValidEmail) return next(createError(403, "The email must be valid."));
-
-    const hashedPassword = bcrypt.hashSync(password, 10);
-
-    const newUser = new User({
-      username,
-      email,
-      password: hashedPassword,
-      profileUrl: userProfile,
-      address,
-      tel,
-    });
-
-    await newUser.save();
-
-    const token = jwt.sign(
-      {
-        id: newUser._id,
-        username: newUser.username,
-        email: newUser.email,
-        role: newUser.role,
-        tel: newUser.tel,
-      },
-      process.env.JWT_SECRET,
-      { expiresIn: "7d" }
-    );
-
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      maxAge: 24 * 60 * 60 * 1000,
-    });
-
-    // ✅ Send welcome email
-    const mailOptions = {
-      from: process.env.USER_EMAIL,
-      to: email,
-      subject: "Welcome to TT Electronics!",
-      text: `Hi ${username},\n\nWelcome to EaglesTrans!  Your account has been created successfully.\n\nThanks,\nTT Electronics Team`,
-    };
-
-    transporter.sendMail(mailOptions, (err, info) => {
-      if (err) console.error("Email error (register):", err);
-    });
-
-    res.status(201).json({
-      success: true,
-      message: "New user registered successfully.",
-      token,
-      user: {
-        id: newUser._id,
-        username: newUser.username,
-        email: newUser.email,
-        role: newUser.role,
-        tel: newUser.tel,
-      },
-    });
-  } catch (error) {
-    next(createError(500, "Internal server error"));
-  }
-};
-
-// ------------------------------------
-// 📤 LOGIN
-const login = async (req, res, next) => {
-  const { tel, password } = req.body;
-
-  try {
-    const user = await User.findOne({ tel });
-    if (!user) return next(createError(404, "User or password incorrect."));
-
-    const isValidPassword = bcrypt.compareSync(password, user.password);
-    if (!isValidPassword)
-      return next(createError(403, "Username or password is incorrect."));
-
-    const token = jwt.sign(
-      {
-        id: user._id,
-        username: user.username,
-        email: user.email,
-        profileUrl: user.profileUrl,
-        address: user.address,
-        tel: user.tel,
-        role: user.role,
-      },
-      process.env.JWT_SECRET,
-      { expiresIn: "1d" }
-    );
-
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      maxAge: 24 * 60 * 60 * 1000,
-    });
-
-    // ✅ Send login alert email
-    const loginMailOptions = {
-      from: process.env.USER_EMAIL,
-      to: user.email,
-      subject: "New Login Notification",
-      text: `Hi ${user.username},\n\nYou just logged in to your EaglesTrans account.\n\nIf this wasn't you, please change your password immediately.\n\nThanks,\nTT Electronics`,
-    };
-
-    transporter.sendMail(loginMailOptions, (err, info) => {
-      if (err) console.error("Email error (login):", err);
-    });
-
-    res.status(200).json({
-      success: true,
-      message: "Login successful.",
-      token,
-      user: {
-        id: user._id,
-        username: user.username,
-        email: user.email,
-        profileUrl: user.profileUrl,
-        address: user.address,
-        tel: user.tel,
-        role: user.role,
-      },
-    });
-  } catch (error) {
-    next(createError(500, "Internal error occurred."));
-  }
-};
+}
 
 
 const logout = async (req, res, next) => {
