@@ -7,7 +7,7 @@ Content-Type: application/json
 {
 "username":"Admin",
 "email":"eaglesvisionms@gmail.com",
-"tel":"+254743303216",
+"tel":"+2254651379",
 "password":"1234"
 }
 ###auth  router  register and  (Login)
@@ -16,7 +16,7 @@ Content-Type: application/json
 
 
 {
-"tel":"3058309583",
+"tel":"+2254651379",
 "password":"1234"
 }
 
@@ -33,8 +33,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYzZmFjM
 ### create Order .
 POST http://localhost:3002/api/order/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MWNiZTg5NTRmZjMyNzk3MmZjNThhYyIsInVzZXJuYW1lIjoiQWRtaW4iLCJlbWFpbCI6ImVhZ2xlc3Zpc2lvbm1zQGdtYWlsLmNvbSIsInByb2ZpbGVVcmwiOm51bGwsImFkZHJlc3MiOltdLCJ0ZWwiOiIzMDU4MzA5NTgzIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzQ2NzE1MTU5LCJleHAiOjE3NDczMTk5NTl9.xIdGSqmydxXzmdv6xDNjYN5Zg3HSvKJtlKgbEqZRs-4
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MjRhZDQ4ODg3YmMxNjIzNWU3MzE1OSIsInVzZXJuYW1lIjoiQWRtaW4iLCJlbWFpbCI6ImVhZ2xlc3Zpc2lvbm1zQGdtYWlsLmNvbSIsInJvbGUiOiJjbGllbnQiLCJ0ZWwiOiIrMjI1NDY1MTM3OSIsImlhdCI6MTc0NzIzNjI5OSwiZXhwIjoxNzQ3ODQxMDk5fQ.Be6sF-N8fdE8Gd1l4nNEEsuj1UW844fkTEv8jJvKoWk
 {
      "pickupLocation":"abidjan",
       "dropLocation":"yamoussoukro",
@@ -87,7 +86,7 @@ Authorization: Bearer S4j7VoayozVDiqhLx9ISNSeVuvn
 ### credate Partner
 POST http://localhost:3002/api/partner/create-partner
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDYzZmFjMWQ4YzBmOTU3NTlkMWE2OSIsInVzZXJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluMDFAZ21haWwuY29tIiwicGljdHVyZSI6bnVsbCwiY291bnRyeSI6IktlbnlhIiwiY2l0eSI6Ik5haXJvYmkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDU2NjY4NzIsImV4cCI6MTc0NTY3NzY3Mn0.bOdqtY8Pn-rBm4Y1nf22FROTZCwfN3t31REBCAedhbk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MjRhZDQ4ODg3YmMxNjIzNWU3MzE1OSIsInVzZXJuYW1lIjoiQWRtaW4iLCJlbWFpbCI6ImVhZ2xlc3Zpc2lvbm1zQGdtYWlsLmNvbSIsInByb2ZpbGVVcmwiOm51bGwsImFkZHJlc3MiOltdLCJ0ZWwiOiIrMjI1NDY1MTM3OSIsInJvbGUiOiJjbGllbnQiLCJpYXQiOjE3NDcyMzY1MDMsImV4cCI6MTc0NzMyMjkwM30.U_DFSYR6tI85JaeU_uIKmQezZSscdrzDYNiejeKEKmE
 
 {
   "carName": "Toyota",
